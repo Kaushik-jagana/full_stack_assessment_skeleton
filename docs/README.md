@@ -129,7 +129,12 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 ### solution
 
-> explain briefly your solution for this problem here
+ - Created three distinct tables
+   - A user table to store information about users (username and email).
+   - A home table to store information about homes (address, state, zip, square footage, beds, baths, etc).
+   - A user_home_relation table, which acts as a junction table to handle the many-to-many relationship between users and homes. This table stores the username and home_id as foreign keys, linking the user and home tables.
+ - This approach ensured that the relationship between users and homes was properly represented, eliminating redundancy.
+
 
 ## 2. React SPA
 
@@ -220,7 +225,17 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 ### solution
 
-> explain briefly your solution for this problem here
+- Used react for the frontend structure.
+- Managed global state with Redux Toolkit to track the selected user and the related homes.
+- Handled data fetching with RTK Query to efficiently communicate with the backend APIs.
+- Created a modal to allow users to edit the associations between users and homes. When the user clicks "Edit Users," a modal appears where they can check/uncheck users related to a specific home, and their selections are saved immediately.
+
+-Execution
+   ```bash
+      cd frontend
+      npm install
+      npm start
+```
 
 ## 3. Backend API development on Node
 
@@ -281,7 +296,20 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 ### solution
 
-> explain briefly your solution for this problem here
+- Used Express.js to create the server.
+- Used Sequelize to define models for User, Home, and UserHome, and set up relationships between them.
+- Implemented four main API endpoints:
+  - /user/find-all: Retrieves all users
+  - /home/find-by-user: Retrieves homes related to a specific user.
+  - /user/find-by-home: Retrieves users related to a specific home.
+  - /home/update-users: Updates the users associated with a specific home.
+
+- Execution
+  ```bash
+    cd backend
+    npm install
+    node index.js
+     ```    
 
 ## Submission Guidelines
 
